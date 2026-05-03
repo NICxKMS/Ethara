@@ -28,7 +28,7 @@ Tech stack:
 Local setup:
 1. Run npm install.
 2. Create .env from .env.example.
-3. Set DATABASE_URL, SESSION_SECRET, and NODE_ENV.
+3. Set DATABASE_URL and SESSION_SECRET.
 4. Run npm run db:migrate.
 5. Run npm run dev.
 

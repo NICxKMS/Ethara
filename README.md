@@ -81,8 +81,9 @@ Required Railway variables:
 ```bash
 DATABASE_URL=${{Postgres.DATABASE_URL}}
 SESSION_SECRET=<long random production secret>
-NODE_ENV=production
 ```
+
+Do not add `NODE_ENV=production` manually in Railway. Railway/Next.js will set the production runtime environment; setting it as a project variable can make npm omit build dependencies before `next build`.
 
 The committed `railway.json` uses:
 

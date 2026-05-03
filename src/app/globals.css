@@ -1,0 +1,124 @@
+@import "tailwindcss";
+
+:root {
+	--background: #f6f1e8;
+	--foreground: #18181b;
+	--surface: #fffdf7;
+	--surface-muted: #f0eadf;
+	--slate: #334155;
+	--slate-muted: #64748b;
+	--copper: #b85c38;
+	--copper-dark: #9a4a2b;
+	--brass: #d6a85a;
+	--border-soft: rgb(136 114 107 / 0.16);
+	--shadow-soft: 0 4px 12px rgb(24 24 27 / 0.03);
+	--shadow-lift: 0 12px 32px rgb(24 24 27 / 0.08);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-parchment: var(--background);
+  --color-warm-surface: var(--surface);
+  --color-warm-muted: var(--surface-muted);
+  --color-charcoal: var(--foreground);
+  --color-command-slate: var(--slate);
+  --color-muted-slate: var(--slate-muted);
+  --color-copper: var(--copper);
+  --color-copper-dark: var(--copper-dark);
+  --color-brass: var(--brass);
+  --color-soft-border: var(--border-soft);
+  --font-sans: var(--font-geist-sans);
+  --font-display: var(--font-sora);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+	background: var(--background);
+	color: var(--foreground);
+	font-family: var(--font-geist-sans), sans-serif;
+}
+
+body::before {
+	background-image:
+		linear-gradient(rgb(24 24 27 / 0.025) 1px, transparent 1px),
+		linear-gradient(90deg, rgb(24 24 27 / 0.025) 1px, transparent 1px);
+	background-size: 32px 32px;
+	content: "";
+	inset: 0;
+	pointer-events: none;
+	position: fixed;
+	z-index: -2;
+}
+
+body::after {
+	background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 220 220' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.045'/%3E%3C/svg%3E");
+	content: "";
+	inset: 0;
+	mix-blend-mode: multiply;
+	pointer-events: none;
+	position: fixed;
+	z-index: -1;
+}
+
+::selection {
+	background: rgb(184 92 56 / 0.2);
+}
+
+:focus-visible {
+	outline: 2px solid var(--copper);
+	outline-offset: 3px;
+}
+
+input,
+select,
+textarea,
+button,
+a {
+	-webkit-tap-highlight-color: transparent;
+}
+
+.font-display {
+	font-family: var(--font-sora), var(--font-geist-sans), sans-serif;
+}
+
+.paper-card {
+	background: var(--surface);
+	border: 1px solid var(--border-soft);
+	box-shadow: var(--shadow-soft);
+}
+
+.copper-button {
+	background: var(--copper);
+	color: #fffdf7;
+	transition:
+		background-color 160ms ease,
+		transform 160ms ease,
+		box-shadow 160ms ease;
+}
+
+.copper-button:hover {
+	background: var(--copper-dark);
+	box-shadow: 0 18px 40px rgb(184 92 56 / 0.22);
+	transform: translateY(-1px);
+}
+
+.copper-button:active {
+	transform: translateY(0);
+}
+
+.stitch-field {
+	background: var(--surface);
+	border: 1px solid var(--border-soft);
+	border-radius: 0.75rem;
+	color: var(--foreground);
+	transition:
+		border-color 160ms ease,
+		box-shadow 160ms ease;
+}
+
+.stitch-field:focus {
+	border-color: var(--copper);
+	box-shadow: 0 0 0 3px rgb(184 92 56 / 0.1);
+	outline: none;
+}
